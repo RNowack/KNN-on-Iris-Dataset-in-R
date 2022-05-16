@@ -1,10 +1,4 @@
 
-# Standardcide
-setwd("C:/Users/Becci/Desktop/DataScience/Jupyter/Projects_2022")
-pacman::p_load(pacman, ggplot2, dplyr,tidyr, tidyverse, reticulate, rsample, caret)
-
-# https://bradleyboehmke.github.io/HOML/process.html 
-
 # Load and inspect data
 data(iris)
 view(iris)
@@ -37,14 +31,6 @@ data_val = data[-train_partition,]
 # Run algorithms using 10-fold cross validation
 control <- trainControl(method="cv", number=10)
 metric <- "Accuracy"
-
-# The accuracy scores for the testing set can vary depending on what observations are in the set.
-# This disadvantage can be countered using k-fold cross-validation.
-# The accuracy score of the models depends on the observations in the testing set, which is determined
-# by the seed of the pseudo-random number generator (random_state parameter).
-# As a model's complexity increases, the training accuracy (accuracy you get when you train and test the model on the same data) increases.
-# If a model is too complex or not complex enough, the testing accuracy is lower.
-# For KNN models, the value of k determines the level of complexity. A lower value of k means that the model is more complex.
 
 predictions = knn(train, test, cl, params)
 
